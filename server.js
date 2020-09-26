@@ -3,7 +3,10 @@ const io = require('socket.io')(http);
 
 let cards = require("./cards.js");
 
-http.listen(process.env.PORT || 3000);
+http.listen(process.env.PORT || 3000, ()=>{
+    let port = process.env.PORT || 3000;
+    console.log("Server listening on port " + port);
+});
 
 let users = [];
 let countdownObject;
