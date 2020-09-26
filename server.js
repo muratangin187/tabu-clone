@@ -138,6 +138,7 @@ function foundNextPlayers(){
         }
         if(user.username == state.currentPlayer.username){
             found = true;
+            // comment
         }
     }
 }
