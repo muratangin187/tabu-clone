@@ -20,7 +20,7 @@ export default {
         return {
             level: 0,
             currentPlayer: '',
-            socket: process.env.PORT == undefined ? io("http://localhost:3000") : io(window.location.hostname + ":" + process.env.PORT)
+            socket: io()
         };
     },
     mounted() {
