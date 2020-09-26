@@ -1,4 +1,9 @@
-const http = require('http').createServer();
+const express = require('express');
+const app = express();
+const serveStatic = require("serve-static")
+const path = require('path');
+app.use(serveStatic(path.join(__dirname, "dist")));
+const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 let cards = require("./cards.js");
