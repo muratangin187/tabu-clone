@@ -4,15 +4,6 @@
         <font-awesome-icon icon="users" class="teamIcon" />{{ teamName }}
         <span class="teamPoint" :class="team == 'left' ? 'leftPoint':'rightPoint'">{{ team == "left" ? leftPoint : rightPoint}}</span>
     </span>
-    <div class="player readyClass">
-        <span style="float:left;">⭐</span> MURAT
-    </div>
-    <div class="player readyClass">
-        MURAT
-    </div>
-    <div class="player readyClass">
-        MURAT
-    </div>
     <div class="player" v-for="user in teamUsers" :key="user.id" :class="user.ready ? readyClass : notReadyClass">
         <span v-if="currentPlayer == user.username">⭐</span>{{user.username}}
     </div>
