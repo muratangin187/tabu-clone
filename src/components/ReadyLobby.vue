@@ -1,19 +1,23 @@
 <template>
 <div class="readyLobby">
     <div class="usernameDiv" v-if="!ready">
-        <span class="message">HAZIR OLDUGUNDA HAZIRA TIKLA</span>
-        <label v-if="!accountCreated" for="username">Ismin: </label>
-        <input v-if="!accountCreated" v-model="username" type="text" name="username" id="username" class="username">
+        <input v-if="!accountCreated" v-model="username" type="text" name="username" id="username" placeholder="Kullanıcı adı" class="username">
         <select v-if="!accountCreated" class="teamSelect" v-model="team">
             <option value="left">Left team</option>
             <option value="right">Right team</option>
         </select>
-        <button class="ready" v-if="accountCreated" @click="setReady(true)">HAZIRIM</button>
-        <button class="join" v-else @click="setReady(false)">ODAYA GIR</button>
+        <button class="blueButton" v-if="accountCreated" @click="setReady(true)">
+            <font-awesome-icon icon="user-check" class="buttonIcon" /><strong>HAZIRIM</strong>
+        </button>
+        <button class="yellowButton" v-else @click="setReady(false)">
+            <font-awesome-icon icon="gamepad" class="buttonIcon" /><strong>ODAYA GIR</strong>
+        </button>
     </div>
     <div class="waitOthersDiv" v-else-if="!countdownStarted">
         <span class="message">DIGER OYUNCULARIN HAZIR OLMASI BEKLENIYOR</span>
-        <button class="notReady" @click="setReady(false)">IPTAL</button>
+        <button class="redButton" @click="setReady(false)">
+            <font-awesome-icon icon="ban" class="buttonIcon" /><strong>IPTAL</strong>
+        </button>
     </div>
     <div class="countdownDiv" v-else>
         <span class="message">OYUNUN BASLAMASINA SON</span>
@@ -79,8 +83,12 @@ export default {
 
 <style scoped>
 .readyLobby {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 100px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 5px solid #000;
+    border-radius: 20px;
 }
 
 .waitOthersDiv {
@@ -95,15 +103,23 @@ export default {
 
 .teamSelect {
     padding: 10px;
+    height: 50px;
     font-size: 20px;
     border: 1px solid #707070;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.teamSelect:focus {
+    outline: 0;
 }
 
 .username {
     padding: 10px;
     border: 1px solid #707070;
-    border-radius: 20px;
-    display: block;
+    border-right: none;
+    width: 200px;
+    height: 28px;
+    border-radius: 20px 0px 0px 20px;
     margin: 30px auto;
     font-size: 20px;
 }
@@ -114,75 +130,6 @@ export default {
 
 .username:focus {
     outline: 0;
-}
-
-.ready {
-    padding: 20px;
-    background-color: #59b6e6;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    display: block;
-    margin: 30px auto;
-}
-
-.ready:hover {
-    background-color: #44a9de;
-}
-
-.ready:focus {
-    outline: 0;
-}
-
-.ready:active {
-    background-color: #3793c2;
-    border: null;
-}
-
-.join {
-    padding: 20px;
-    background-color: #76E569;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    display: block;
-    margin: 30px auto;
-}
-
-.join:hover {
-    background-color: #6BD85E;
-}
-
-.join:focus {
-    outline: 0;
-}
-
-.join:active {
-    background-color: #5FCB52;
-    border: null;
-}
-
-.notReady {
-    padding: 20px 50px;
-    background-color: #E37373;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    display: block;
-    margin: 30px auto;
-}
-
-.notReady:hover {
-    background-color: #D46666;
-}
-
-.notReady:focus {
-    outline: 0;
-}
-
-.notReady:active {
-    background-color: #C95555;
-    border: null;
 }
 
 .player {

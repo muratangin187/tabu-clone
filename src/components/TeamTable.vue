@@ -1,7 +1,18 @@
 <template>
 <div class="team-table" :class="team == 'left'? 'leftTeamTable' : 'rightTeamTable'">
-    <span class="teamName" :style="team == 'left' ? 'color:red' : 'color:green' ">{{ teamName }}</span>
-    <span class="teamPoint">{{ team == "left" ? leftPoint : rightPoint}}</span>
+    <span class="teamName" :class="team == 'left' ? 'leftName' : 'rightName' ">
+        <font-awesome-icon icon="users" class="teamIcon" />{{ teamName }}
+        <span class="teamPoint" :class="team == 'left' ? 'leftPoint':'rightPoint'">{{ team == "left" ? leftPoint : rightPoint}}</span>
+    </span>
+    <div class="player readyClass">
+        <span style="float:left;">⭐</span> MURAT
+    </div>
+    <div class="player readyClass">
+        MURAT
+    </div>
+    <div class="player readyClass">
+        MURAT
+    </div>
     <div class="player" v-for="user in teamUsers" :key="user.id" :class="user.ready ? readyClass : notReadyClass">
         <span v-if="currentPlayer == user.username">⭐</span>{{user.username}}
     </div>
@@ -67,11 +78,30 @@ export default {
     font-weight: bold;
     margin: 10px;
     color: #707070;
+    padding: 20px 23px;
+    border: 5px solid #000;
+    border-radius: 20px 20px 0px 0px;
+    vertical-align: middle;
+}
+
+.leftName {
+    background-color: rgb(212, 73, 73);
+    color: #fff;
+}
+
+.rightName {
+    background-color: rgb(64, 194, 64);
+    color: #fff;
+}
+
+.teamIcon {
+    margin: 3px 20px 10px 5px;
+    vertical-align: middle;
+    font-size: 30px;
 }
 
 .teamPoint {
     font-size: 25px;
-    margin: 10px;
 }
 
 .readyClass {
@@ -91,11 +121,24 @@ export default {
 }
 
 .player {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #707070;
+    padding: 18px 10px;
+    margin-left: 10px;
+    border: 5px solid #000;
+    border-bottom: none;
     color: #fff;
-    border-radius: 15px;
+    width: 222px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.player:first-of-type {
+    margin-top: 10px;
+}
+
+.player:last-of-type {
+    border-bottom: 5px solid #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 h3 {
