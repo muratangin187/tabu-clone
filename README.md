@@ -1,5 +1,6 @@
 # tabu
 A tabu clone which implemented on nodejs, socket.io and vuejs technology stack.
+The language of tabu cars is Turkish currently. I will add English version later.
 
 ## Screenshot
 
